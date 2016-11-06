@@ -38,20 +38,33 @@
 <script>
 
     var calculate= document.querySelector('#calc_body'); /*создали переменную "калькулятор" и записали в неё выбранный по селектору элемент (оболочку калькулятора) */
-    var x , y , z ; /* создали переменные */
+    var x , a , b , z ; /* создали переменные */
     result_visible = document.querySelector('#result');
 
     calculate.onclick = function (e) { /*При нажатии на что угодно в блоке "калькулятор" запускается функция, аргумент котрой "объект события"*/
 
-    var type = e.target.getAttribute('data-type'); /*опред тип кнопки и записываем это в тип*/
-        var x = +e.target.innerHTML; /*отслеживаем куда был проихведен клик и сожержимое этого блока записываем в переменную Х (преобразовав в число)*/
-        result_visible.innerHTML =  x; /*в болк "result_visible" выводим значение Х*/
+        var type = e.target.getAttribute('data-type'); /*опред тип кнопки и записываем это в тип*/
+        var x = +e.target.innerHTML;   /*отслеживаем куда был произведен клик и сожержимое этого блока записываем в переменную Х (преобразовав в число)*/
+        var a = x; /*записываем значение х в а, чтобы потом с ним работать*/
+        var x = 0;  /*обнуляем*/
+
+        if (a > -1) {    /* если а уже занято другим знчением, то оно больше -1  */
+            var x = +e.target.innerHTML; /* тогда снова в х записываем значение нажатой кнопки */
+            var b = x;  /* получаем вторую цифру для работы*/
+            var x = 0; /*обнуляем*/
+        }
+
+
+        result_visible.innerHTML =  a; /*в болк "result_visible" выводим значение Х*/
 
        /*** var y = +e.target.innerHTML;  - При таком варианта просто значение перезаписывается*/
-        console.log(x);
+      /*  console.log(x);*/
 
-        var y = +e.target.innerHTML;
-        console.log(y); 
+
+       /* var y = +e.target.innerHTML;*/
+        console.log(a);
+
+        console.log(b);
 
         /** 1. В зависимости от data-type производить какие-то действия,
          *     Но при нажатии на кнопку с data-type number в
@@ -75,7 +88,8 @@
                 break;
         }
         console.log(x);
-        console.log(y); */
+        console.log(y);
+        */
 
      /** 2. Создать 2 функции: для кнопок и для операторов отдельно
       *      ? но тогда нет смысла в event и определении data-type
