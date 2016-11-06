@@ -37,16 +37,15 @@
 
 <script>
 
-    var calculate= document.querySelector('#calc_body'); /*создали переменную "калькулятор" и записали в неё выбранный элемент (оболочку калькулятора) */
-
+    var calculate= document.querySelector('#calc_body'); /*создали переменную "калькулятор" и записали в неё выбранный по селектору элемент (оболочку калькулятора) */
     var x , y , z ; /* создали переменные */
     result_visible = document.querySelector('#result');
 
-    calculate.onclick = function (e) {  /*При нажатии на что угодно в "калькулятор" запускается функция*/
+    calculate.onclick = function (e) {  /*При нажатии на что угодно в блоке "калькулятор" запускается функция, аргумент котрой "объект события"*/
 
     var type = e.target.getAttribute('data-type'); /*опред тип кнопки и записываем это в тип*/
-        var x = +e.target.innerHTML;
-        result_visible.innerHTML =  x;
+        var x = +e.target.innerHTML; /*отслеживаем куда был проихведен клик и сожержимое этого блока записываем в переменную Х (преобразовав в число)*/
+        result_visible.innerHTML =  x; /*в болк "result_visible" выводим значение Х*/
 
        /*** var y = +e.target.innerHTML;  - При таком варианта просто значение перезаписывается*/
         console.log(x);
@@ -122,7 +121,7 @@
 
 
 
-/** старый неребочий вариант */
+/** /*старый неребочий вариант */
 /*n1.onclick = function () {
     click1 = +n1.value;
     result_visible.innerHTML =  n1.value;
@@ -158,10 +157,6 @@ submit.onclick = function() {
          console.log(n1.value);
      }
 */
-
-
-
-
 
 
 
