@@ -41,7 +41,7 @@
     var x , y , z ; /* создали переменные */
     result_visible = document.querySelector('#result');
 
-    calculate.onclick = function (e) {  /*При нажатии на что угодно в блоке "калькулятор" запускается функция, аргумент котрой "объект события"*/
+    calculate.onclick = function (e) { /*При нажатии на что угодно в блоке "калькулятор" запускается функция, аргумент котрой "объект события"*/
 
     var type = e.target.getAttribute('data-type'); /*опред тип кнопки и записываем это в тип*/
         var x = +e.target.innerHTML; /*отслеживаем куда был проихведен клик и сожержимое этого блока записываем в переменную Х (преобразовав в число)*/
@@ -50,8 +50,8 @@
        /*** var y = +e.target.innerHTML;  - При таком варианта просто значение перезаписывается*/
         console.log(x);
 
-       /* var y = +e.target.innerHTML;
-        console.log(y); */
+        var y = +e.target.innerHTML;
+        console.log(y); 
 
         /** 1. В зависимости от data-type производить какие-то действия,
          *     Но при нажатии на кнопку с data-type number в
