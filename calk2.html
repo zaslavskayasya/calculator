@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0/">
+    <title>2</title>
+    <link rel="stylesheet" type="text/css"  href="style_calc.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+</head>
+<body>
+
+<div class="container">
+    <div id="calc_body" class="calc">
+        <div id="result"></div>
+        <div class="buttons" id="buttons">
+            <button data-type="number" name="click"  id="a1" value="1">1</button>
+            <button data-type="number" name="click"  id="a2" value="2">2</button>
+            <button data-type="number" name="click"  id="a3" value="3">3</button>
+            <button data-type="number" name="click"  id="a4" value="4">4</button>
+            <button data-type="number" name="click"  id="a5" value="5">5</button>
+            <button data-type="number" name="click" id="a6" value="6">6</button>
+            <button data-type="number" name="click"  id="a7" value="7">7</button>
+            <button data-type="number" name="click"  id="a8" value="8">8</button>
+            <button data-type="number" name="click"  id="a9" value="9">9</button>
+            <button data-type="number" name="click"  id="a0" value="0">0</button>
+            <div class="operators" id="operators">
+                <button data-type="znak" id="a_plus" value="+">+</button>
+                <button data-type="znak" id="a_min" value="-">-</button>
+                <button data-type="znak" id="a_div" value="/">/</button>
+                <button data-type="znak" id="a_mult" value="*">*</button>
+                <button data-type="znak" id="dd" value="clear">clear</button>
+                <button data-type="submit" id="a_submit" value="=">=</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        var calculate= document.querySelector('#calc_body'); /*создали переменную "калькулятор" и записали в неё выбранный по селектору элемент (оболочку калькулятора) */
+        var x , z, y, res ; /* создали переменные */
+        result_visible = document.querySelector('#result');
+            window.addEventListener("keydown", function(e) {
+                x = event.keyCode;
+                var type = e.target.getAttribute('data-type');
+                console.log(x);
+                if (type == "number") {
+                    if (!z) {
+                        x = 0;
+                        x = +(x + e.target.innerHTML);
+                        result_visible.innerHTML = x;
+                        console.log(x + type);
+                    } else {
+                        y = 0;
+                        y = +(+e.target.innerHTML);
+                        result_visible.innerHTML = y;
+                        console.log(y + 'y');
+                    }
+                }
+                if (type == 'znak') {
+                    z = e.target.innerHTML;
+                    result_visible.innerHTML = z;
+                }
+                /*  function clearr() {
+                 x = 0;
+                 y = 0;
+                 res = 0;
+                 */
+                if (type == 'submit') {
+                    switch (z) {
+                        case '+':
+                            res =x + y ;
+                            console.log(res);
+                            result_visible.innerHTML = res;
+                            break;
+                        case '-':
+                            res =x - y ;
+                            console.log(res);
+                            result_visible.innerHTML = res;
+                            break;
+                        case '*':
+                            res =x * y ;
+                            console.log(res);
+                            result_visible.innerHTML = res;
+                            break;
+                        case '/':
+                            res =x / y ;
+                            console.log(res);
+                            result_visible.innerHTML = res;
+                            break;
+                        case 'clear':
+                            x =0 ;
+                            y = 0;res =0 ;
+                            console.log(clear);
+                            break;
+                        default:
+                            break;
+                    }
+
+
+                }
+            })
+
+
+
+
+    </script>
+
+</body>
+</html>

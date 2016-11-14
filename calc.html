@@ -3,174 +3,103 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0/">
-    <title>calcF</title>
+    <title>1</title>
     <link rel="stylesheet" type="text/css"  href="style_calc.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
 
 </head>
 <body>
-
-     <div class="container">
-         <div id="calc_body" class="calc">
-             <div id="result"></div>
-             <div class="buttons" id="buttons">
-                 <button data-type="number" name="click"  id="a1" value="1">1</button>
-                 <button data-type="number" name="click"  id="a2" value="2">2</button>
-                 <button data-type="number" name="click"  id="a3" value="3">3</button>
-                 <button data-type="number" name="click"  id="a4" value="4">4</button>
-                 <button data-type="number" name="click"  id="a5" value="5">5</button>
-                 <button data-type="number" name="click" id="a6" value="6">6</button>
-                 <button data-type="number" name="click"  id="a7" value="7">7</button>
-                 <button data-type="number" name="click"  id="a8" value="8">8</button>
-                 <button data-type="number" name="click"  id="a9" value="9">9</button>
-                 <button data-type="number" name="click"  id="a0" value="0">0</button>
-             <div class="operators" id="operators">
-                 <button data-type="znak" id="a_plus" value="+">+</button>
-                 <button data-type="znak" id="a_min" value="-">-</button>
-                 <button data-type="znak" id="a_div" value="/">/</button>
-                 <button data-type="znak" id="a_mult" value="0">*</button>
-                 <button data-type="submit" id="a_submit" value="=">=</button>
+            <div class="container">
+             <div id="calc_body" class="calc">
+                 <div id="result"></div>
+                 <div class="buttons" id="buttons">
+                     <button data-type="number" name="click"  id="a1" value="1">1</button>
+                     <button data-type="number" name="click"  id="a2" value="2">2</button>
+                     <button data-type="number" name="click"  id="a3" value="3">3</button>
+                     <button data-type="number" name="click"  id="a4" value="4">4</button>
+                     <button data-type="number" name="click"  id="a5" value="5">5</button>
+                     <button data-type="number" name="click" id="a6" value="6">6</button>
+                     <button data-type="number" name="click"  id="a7" value="7">7</button>
+                     <button data-type="number" name="click"  id="a8" value="8">8</button>
+                     <button data-type="number" name="click"  id="a9" value="9">9</button>
+                     <button data-type="number" name="click"  id="a0" value="0">0</button>
+                     <div class="operators" id="operators">
+                         <button data-type="znak" id="a_plus" value="+">+</button>
+                         <button data-type="znak" id="a_min" value="-">-</button>
+                         <button data-type="znak" id="a_div" value="/">/</button>
+                         <button data-type="znak" id="a_mult" value="*">*</button>
+                         <button data-type="znak" id="dd" value="clear">clear</button>
+                         <button data-type="submit" id="a_submit" value="=">=</button>
+                     </div>
+                 </div>
              </div>
-         </div>
-     </div>
-
+                </div>
 <script>
 
     var calculate= document.querySelector('#calc_body'); /*создали переменную "калькулятор" и записали в неё выбранный по селектору элемент (оболочку калькулятора) */
-    var x , a , b , z ; /* создали переменные */
+    var x , z, y, res ; /* создали переменные */
     result_visible = document.querySelector('#result');
-
-    calculate.onclick = function (e) { /*При нажатии на что угодно в блоке "калькулятор" запускается функция, аргумент котрой "объект события"*/
-
-        var type = e.target.getAttribute('data-type'); /*опред тип кнопки и записываем это в тип*/
-        var x = +e.target.innerHTML;   /*отслеживаем куда был произведен клик и сожержимое этого блока записываем в переменную Х (преобразовав в число)*/
-        var a = x; /*записываем значение х в а, чтобы потом с ним работать*/
-        var x = 0;  /*обнуляем*/
-
-        if (a > -1) {    /* если а уже занято другим знчением, то оно больше -1  */
-            var x = +e.target.innerHTML; /* тогда снова в х записываем значение нажатой кнопки */
-            var b = x;  /* получаем вторую цифру для работы*/
-            var x = 0; /*обнуляем*/
+     calculate.onclick = function (e) { /*При нажатии на что угодно в блоке "калькулятор" запускается функция, аргумент котрой "объект события"*/
+         var type = e.target.getAttribute('data-type');
+         /*опред тип кнопки и записываем это в тип*/
+         if (type == "number") {
+             if (!z) {
+                 x = 0;
+                 x = +(x + e.target.innerHTML); /* то что должно записывать 2 числа, но не работает*/
+                 result_visible.innerHTML = x;
+                 console.log(x + 'x');
+             } else {
+                 y = 0;
+                 y = +(+e.target.innerHTML);
+                 result_visible.innerHTML = y;
+                 console.log(y + 'y');
+             }
+         }
+         if (type == 'znak') {
+             z = e.target.innerHTML;
+             result_visible.innerHTML = z;
+         }
+         /*  function clearr() {
+            x = 0;
+            y = 0;
+            res = 0;
+*/
+        if
+        (type == 'submit') {
+            switch (z) {
+                case '+':
+                    res = x + y;
+                    console.log(res);
+                    result_visible.innerHTML = res;
+                    break;
+                case '-':
+                    res = x - y;
+                    console.log(res);
+                    result_visible.innerHTML = res;
+                    break;
+                case '*':
+                    res = x * y;
+                    console.log(res);
+                    result_visible.innerHTML = res;
+                    break;
+                case '/':
+                    res = x / y;
+                    console.log(res);
+                    result_visible.innerHTML = res;
+                    break;
+                case 'clear':
+                    x = 0;
+                    y = 0;
+                    res = 0;
+                    break;
+                default:
+                    break;
+            }
+        }
         }
 
 
-        result_visible.innerHTML =  a; /*в болк "result_visible" выводим значение Х*/
-
-       /*** var y = +e.target.innerHTML;  - При таком варианта просто значение перезаписывается*/
-      /*  console.log(x);*/
-
-
-       /* var y = +e.target.innerHTML;*/
-        console.log(a);
-
-        console.log(b);
-
-        /** 1. В зависимости от data-type производить какие-то действия,
-         *     Но при нажатии на кнопку с data-type number в
-         *    "y" не получается записать данные, потому что кнопка была нажата,
-         *    функция запущена и отработала, а "x" после первого нажатия всегда
-         *    будет больше 0
-         *
-         * */
-     /* switch (type) {
-          case 'number':
-                x = +e.target.innerHTML;
-                 if (x>0){
-                 y = +e.target.innerHTML;
-                 }
-
-                break;
-          case 'znak':
-
-                break;
-            default:
-                break;
-        }
-        console.log(x);
-        console.log(y);
-        */
-
-     /** 2. Создать 2 функции: для кнопок и для операторов отдельно
-      *      ? но тогда нет смысла в event и определении data-type
-      *       .....
-      *  var operators= document.querySelector('#operators');
-      *
-      * */
-
-      /*  console.log(x);
-        y = e.target.innerHTML;
-        console.log(y);
-        result_visible.innerHTML =  x;
-        result_visible.innerHTML =  y;
-        var type = e.target.getAttribute('data-type');*/
-
-
-   /* operators.onclick = function (e) {
-        var type = e.target.getAttribute('data-type');
-         switch (type){
-             case: 'znak';
-              break;
-             case: 'submit';
-                 break;
-        }*/
-    }
-
-
-
-/* арифметические функции, потом добавить */
-  /*  function sum_ab (a, b) {
-        return a + b;
-    }
-    function mult_ab (a, b) {
-        return a * b;
-    }
-    function subt_ab (a, b) {
-        return a - b;
-    }
-    function div_ab (a, b) {
-        return a / b;
-    }
-*/
-
-
-
-/** /*старый неребочий вариант */
-/*n1.onclick = function () {
-    click1 = +n1.value;
-    result_visible.innerHTML =  n1.value;
-    console.log(n1.value);
-}
-
-n2.onclick = function () {
-    click2 = +n2.value;
-    result_visible.innerHTML =  n2.value;
-    console.log(n2.value);
-}
-
-plus.onclick = function () {
-    click_plus = plus.value;
-    result_visible.innerHTML = plus.value;
-    console.log(plus.value);
-}
-
-submit.onclick = function() {
-    var x = sum_ab(click1, click2);
-    console.log(x);
-
-}
-
-
-   /*   named_click.onclick = function () {
-          var i = document.querySelector("buttons");
-      }
-
-     if (n1.onclick == true ) {
-         click1 = +n1.value;
-         result_visible.innerHTML =  n1.value;
-         console.log(n1.value);
-     }
-*/
 
 
 
